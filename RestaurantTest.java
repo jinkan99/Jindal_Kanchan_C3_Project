@@ -99,6 +99,7 @@ class RestaurantTest {
         int ActualCost = restaurant.calculateTotalCost(itemsSelectedByUser);
         int expectedCost = 119 + 269; // adding the cost of items selected by the user
 
+        //Passing test cases after feature implementation
         assertEquals(2, itemsSelectedByUser.size());
         assertThat(itemsSelectedByUser, hasItems("Sweet corn soup","Vegetable lasagne"));
         assertEquals(expectedCost, ActualCost);
@@ -109,6 +110,7 @@ class RestaurantTest {
 
         int ActualCost = restaurant.calculateTotalCost(itemsSelectedByUser);
 
+        //Passing test cases after feature implementation
         assertEquals(0, ActualCost);
     }
 }

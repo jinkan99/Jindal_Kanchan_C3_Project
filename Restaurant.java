@@ -72,13 +72,21 @@ public class Restaurant {
         return name;
     }
 
-     public List<String> itemSelected(String itemName) {
+    public List<String> itemSelected(String itemName){
+        for(Item i : menu){
+            if(i.getName().equals(itemName))
+                items.add(i.getName());
+        }
         return items;
     }
 
-    public int calculateTotalCost(List<String> itemsSelectedByUser) {
-
-        return -1;
+    protected int calculateTotalCost(List<String> items) {
+        int totalCost =0;
+        for(String s : items){
+            Item i = findItemByName(s);
+            totalCost = totalCost + i.getPrice();
+        }
+        return totalCost;
     }
 
 }
