@@ -9,6 +9,7 @@ public class Restaurant {
     public LocalTime openingTime;
     public LocalTime closingTime;
     private List<Item> menu = new ArrayList<Item>();
+    private List<String> items = new ArrayList<String>();
 
     public Restaurant(String name, String location, LocalTime openingTime, LocalTime closingTime) {
         this.name = name;
@@ -69,6 +70,15 @@ public class Restaurant {
     public String getName() {
 
         return name;
+    }
+
+     public List<String> itemSelected(String itemName) {
+        return items;
+    }
+
+    public int calculateTotalCost(List<String> itemsSelectedByUser) {
+
+        return -1;
     }
 
 }

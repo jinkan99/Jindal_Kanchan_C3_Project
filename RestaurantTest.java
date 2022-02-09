@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RestaurantTest {
     Restaurant restaurant;
+    List<String> itemsSelectedByUser = new ArrayList<String>();
     //REFACTOR ALL THE REPEATED LINES OF CODE
 
     @BeforeEach
@@ -86,4 +87,28 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    //<<<<<<<<<<<<<<<<<<<adding new feature of calculating total cost for all the items added>>>>>>>>>>>>>>>>>>>>>
+
+    @Test
+    public void the_cost_of_items_selected_should_be_added_to_return_the_total_cost_of_the_order(){
+
+        itemsSelectedByUser = restaurant.itemSelected("Sweet corn soup");
+        itemsSelectedByUser = restaurant.itemSelected("Vegetable lasagne");
+
+        int ActualCost = restaurant.calculateTotalCost(itemsSelectedByUser);
+        int expectedCost = 119 + 269; // adding the cost of items selected by the user
+
+        assertEquals(2, itemsSelectedByUser.size());
+        assertThat(itemsSelectedByUser, hasItems("Sweet corn soup","Vegetable lasagne"));
+        assertEquals(expectedCost, ActualCost);
+    }
+
+    @Test
+    public void if_none_of_items_are_selected_then_it_should_return_the_total_cost_of_the_order_as_zero(){
+
+        int ActualCost = restaurant.calculateTotalCost(itemsSelectedByUser);
+
+        assertEquals(0, ActualCost);
+    }
 }
